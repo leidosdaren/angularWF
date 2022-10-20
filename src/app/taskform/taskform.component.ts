@@ -1,6 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { CamundaService } from './camunda.service';
-import { CamundaFormComponent } from './camundaform/camundaform.component';
+import { CamundaService } from '../camunda.service';
 import { FormQuery, TaskState, Task } from 'src/graphql/generated';
 import { Observable } from 'rxjs';
 import {FormGroup} from '@angular/forms';
@@ -12,20 +11,17 @@ import { subscribe } from 'graphql';
 
 
 @Component({
-    selector: 'wfApp',
-    templateUrl: './app.component.html',
+    selector: 'taskform',
+    templateUrl: './taskform.component.html',
   })
 
   
   
-  export class AppComponent implements OnInit {
+  export class TaskFormComponent implements OnInit {
   
   @Output() messageEvent = new EventEmitter<string>();
 
   constructor(private camundaService: CamundaService, private formlyJsonschema: FormlyJsonschema) {}
-
-  showForm: boolean = false;
-    taskFormId!: string;
 
   form = new FormGroup({});
   model: any = {};
@@ -53,9 +49,7 @@ import { subscribe } from 'graphql';
    }
 
   onSubmit(model: Object) {
-    console.log("app component showForm set to true, taskFormId = " + this.model['taskFormId']);
-    this.showForm = true;
-    this.taskFormId = this.model['taskFormId'];
+    this.messageEvent.emit(this.model['taskFormId']);
   }
 
 }

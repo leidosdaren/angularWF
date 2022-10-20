@@ -1,12 +1,11 @@
-/* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "noImplicitOverride": true,
+    "strict": false,
+    "noImplicitOverride": false,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
@@ -18,10 +17,13 @@
     "importHelpers": true,
     "target": "es2020",
     "module": "es2020",
+    "strictPropertyInitialization":false,
     "lib": [
       "es2020",
-      "dom"
-    ]
+      "dom",
+      "esnext.asynciterable"
+    ],
+    "allowSyntheticDefaultImports": true
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

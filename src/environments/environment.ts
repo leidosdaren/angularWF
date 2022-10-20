@@ -1,16 +1,4 @@
-// This file can be replaced during build by using the `fileReplacements` array.
-// `ng build` replaces `environment.ts` with `environment.prod.ts`.
-// The list of file replacements can be found in `angular.json`.
-
 export const environment = {
-  production: false
+  production: false,
+  CAMUNDA_AUTH_TOKEN: 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlFVVXdPVFpDUTBVM01qZEVRME0wTkRFelJrUkJORFk0T0RZeE1FRTBSa1pFUlVWRVF6bERNZyJ9.eyJodHRwczovL2NhbXVuZGEuY29tL29yZ0lkIjoiMGQ5MzY1YjEtNWU1OC00NmExLTgwN2YtYWU2YTdjMzM3N2NkIiwiaXNzIjoiaHR0cHM6Ly93ZWJsb2dpbi5jbG91ZC5jYW11bmRhLmlvLyIsInN1YiI6Im13bzkwdDJyMzE2MDd6MzZCTkg2OXRXRktCWDU1ajFXQGNsaWVudHMiLCJhdWQiOiJ0YXNrbGlzdC5jYW11bmRhLmlvIiwiaWF0IjoxNjY2MjA5NjY4LCJleHAiOjE2NjYyOTYwNjgsImF6cCI6Im13bzkwdDJyMzE2MDd6MzZCTkg2OXRXRktCWDU1ajFXIiwic2NvcGUiOiJlMTA2ZGE0NS1lMmQ3LTQ1YzEtYjZkOC0xYzQ0NGY2NjY2OTEiLCJndHkiOiJjbGllbnQtY3JlZGVudGlhbHMifQ.DAFXyXKbOBcX4D45zR51iLPcLBfiEM_HtvTFfbVI-r5noqpLV9moc-vcCFyf5FTIAaBQrnAyOf-jziO5aPiSJrHT0TcTpXVUH7rc_jYZ-fQPGfAVGOQvrc2v8JC3P874F_WaIHFewaOohjllyhZ6nePmsQa_E5hpwLJboOuJ5fUu5s4N0hRyKitjXkyeyYgyJm1iDH3LGBwEo9Q6Vruw5CFOWGfhtBq1HJge996d_o61v1uRMRoS7QQUY1E8qjxtpBwXPFtutBY30NBHlkeUKD7S2J_Ljy8UkUQF8ryOIB1Mu2wBg7-DM1UIIgkiZAoGZesd3X5Zkv6yBctMiKMRzw'
 };
-
-/*
- * For easier debugging in development mode, you can import the following file
- * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
- *
- * This import should be commented out in production mode because it will have a negative impact
- * on performance if an error is thrown.
- */
-// import 'zone.js/plugins/zone-error';  // Included with Angular CLI.

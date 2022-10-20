@@ -1,0 +1,82 @@
+query form ($id: String!, $processDefinitionId: String!) {
+    form (id: $id, processDefinitionId: $processDefinitionId) {
+        id
+        processDefinitionId
+        schema
+    }
+}
+
+query tasks ($query: TaskQuery!) {
+    tasks (query: $query) {
+        id
+        name
+        taskDefinitionId
+        processName
+        creationTime
+        completionTime
+        assignee
+        variables {
+            id
+            name
+            value
+            previewValue
+            isValueTruncated
+        }
+        taskState
+        sortValues
+        isFirst
+        formKey
+        processDefinitionId
+        candidateGroups
+    }
+}
+
+mutation claimTask ($taskId: String!, $assignee: String) {
+    claimTask (taskId: $taskId, assignee: $assignee) {
+        id
+        name
+        taskDefinitionId
+        processName
+        creationTime
+        completionTime
+        assignee
+        variables {
+            id
+            name
+            value
+            previewValue
+            isValueTruncated
+        }
+        taskState
+        sortValues
+        isFirst
+        formKey
+        processDefinitionId
+        candidateGroups
+    }
+}
+
+mutation completeTask ($taskId: String!, $variables: [VariableInput!]!) {
+    completeTask (taskId: $taskId, variables: $variables) {
+        id
+        name
+        taskDefinitionId
+        processName
+        creationTime
+        completionTime
+        assignee
+        variables {
+            id
+            name
+            value
+            previewValue
+            isValueTruncated
+        }
+        taskState
+        sortValues
+        isFirst
+        formKey
+        processDefinitionId
+        candidateGroups
+    }
+}
