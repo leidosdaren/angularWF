@@ -1,0 +1,10 @@
+<h1> {{ zipcodeRet.body['post code'] }} </h1>
+<p>
+<h3>{{ zipcodeRet.body.places[0]['place name'] }} - {{ zipcodeRet.body.places[0].state }}</h3>
+
+<ul>
+<li>Longitude: {{ zipcodeRet.body.places[0].longitude }} </li>
+<li>Latitude: {{ zipcodeRet.body.places[0].latitude }} </li>
+<li>Country: {{ zipcodeRet.body.country }} </li>
+
+</ul>

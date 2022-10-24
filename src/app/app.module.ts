@@ -14,6 +14,8 @@ import { CamundaService } from './camunda.service';
 import { CamundaFormComponent } from './camundaform/camundaform.component';
 import { TaskFormComponent } from './taskform/taskform.component';
 import { ObjectTypeComponent } from './object.type';
+import { CamundaOperatorService } from './services/camundaoperator.service';
+import { ZipcodeComponent } from './zipcode/zipcode.component';
 
 @NgModule({
   imports: [
@@ -28,8 +30,8 @@ import { ObjectTypeComponent } from './object.type';
     GraphQLModule,
     HttpClientModule,
   ],
-  providers: [CamundaService],
+  providers: [CamundaService, CamundaOperatorService],
   bootstrap: [AppComponent],
-  declarations: [AppComponent, CamundaFormComponent, ObjectTypeComponent, TaskFormComponent],
+  declarations: [AppComponent, CamundaFormComponent, ObjectTypeComponent, TaskFormComponent, ZipcodeComponent],
 })
 export class AppModule {}

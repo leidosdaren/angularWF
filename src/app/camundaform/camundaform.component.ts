@@ -66,10 +66,12 @@ export class CamundaFormComponent implements OnInit {
         
         var myTasks = [];
 
+        /*
         if (this.taskFormId == null) {
             alert("Please supply the taskFormId");
             return;
         }
+        */
 
         // Camunda wants all variables wrapped with quotes
         this.taskFormId = "\"" + this.taskFormId + "\"";
@@ -93,7 +95,7 @@ export class CamundaFormComponent implements OnInit {
 
   getSchema(schema: any) {
     var jsonComponents: any;
-    //console.log("in getSchema: " + schema);
+    console.log("in getSchema: " + schema);
     this.schema = schema;
     jsonComponents = JSON.parse(schema);
     
@@ -112,7 +114,7 @@ export class CamundaFormComponent implements OnInit {
 
     let jsonFieldsStr: any = jsonSchemaPreamble + fieldsStr + "\n} \n }";
 
-    //console.log(jsonFieldsStr);
+    console.log(jsonFieldsStr);
 
     this.type = 'simple';
           this.formGroup = new FormGroup({});
