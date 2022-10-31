@@ -1,10 +1,56 @@
 
-  <hr/>
-
-<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
-    <formly-form [model]="model" [fields]="fields" [options]="options" [form]="formGroup">
-    </formly-form>
-    <button type="submit" class="mat-button">Submit</button>
-  </form>
+<h1>Created tasks</h1>
 
 
+<div class="createdTasksContent">
+  <div fxLayout="row wrap" fxLayoutGap="16px grid">
+    <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let task of (createdTasks | async)" >
+<mat-card  class="mat-elevation-z4">
+  <mat-card-header>
+    <img mat-card-avatar src="../../assets/created_task.png">
+    <mat-card-title>{{task.name}}</mat-card-title>
+    <mat-card-subtitle>{{task.id}}
+    </mat-card-subtitle>
+  </mat-card-header>
+  
+  <mat-card-content>
+    <p>
+      <b>Assignee:</b> {{task.assignee}} <br>
+      <b>Start:</b> {{task.creationTime | date :'short'}} <br>
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button (click)="claimTask(task.id)">Claim</button>
+    <button mat-button (click)="openFormDialog(task.formKey, task.processDefinitionId, task.id)">Complete</button>
+  </mat-card-actions>
+</mat-card>
+</div>
+  </div>
+</div>
+
+<h1>Completed tasks</h1> 
+    
+<div class="completedTasksContent">
+  <div fxLayout="row wrap" fxLayoutGap="16px grid">
+    <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let task of (completedTasks | async)" >
+<mat-card  class="mat-elevation-z4">
+  <mat-card-header>
+    <img mat-card-avatar src="../../assets/completed_task.png">
+    <mat-card-title>{{task.name}}</mat-card-title>
+    <mat-card-subtitle>{{task.id}}
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p>
+      <b>Assignee: </b>{{task.assignee}} <br>
+      <b>Start: </b>{{task.creationTime | date :'short'}} <br>
+      <b>Complete: </b>{{task.completionTime | date :'short'}}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button (click)="showOutput()">Show output</button>
+  </mat-card-actions>
+</mat-card>
+</div>
+  </div>
+</div>

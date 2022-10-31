@@ -1,0 +1,17 @@
+.createdTasksContent {
+    padding: 16px;
+    background: lightyellow;
+    border:1px solid black;
+}
+
+.completedTasksContent {
+    padding: 16px;
+    background: rgb(93, 171, 185);
+    border:1px solid black;
+}
+
+.mat-card-avatar {
+    width: 40px;
+    height: 40px;
+    font-size: 40px;
+  }

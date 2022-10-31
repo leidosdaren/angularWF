@@ -1,0 +1,5 @@
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <formly-form [model]="model" [fields]="fields" [options]="options" [form]="formGroup">
+    </formly-form>
+    <button type="submit" class="mat-button" cdkFocusInitial>Submit</button>
+  </form>

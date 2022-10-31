@@ -26,6 +26,8 @@ import { subscribe } from 'graphql';
 
   showForm: boolean = false;
     taskFormId!: string;
+    processDefinitionId!: string;
+    zipcode!: string;
 
   form = new FormGroup({});
   model: any = {};
@@ -55,7 +57,7 @@ import { subscribe } from 'graphql';
   onSubmit(model: Object) {
     console.log("app component showForm set to true, taskFormId = " + this.model['taskFormId']);
     this.showForm = true;
-    this.taskFormId = this.model['taskFormId'];
+    this.taskFormId = "\"" + this.model['taskFormId'] + "\"";
   }
 
 }

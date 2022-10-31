@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Apollo, gql} from 'apollo-angular';
+import {Apollo, gql, QueryRef} from 'apollo-angular';
 import { Observable } from 'rxjs';
 import {map} from 'rxjs/operators';
 import {FormGQL, FormQuery, Form, TasksGQL, TaskQuery, Task, TasksQuery, ClaimTaskGQL, TaskState, CompleteTaskGQL, VariableInput} from '../graphql/generated';
@@ -12,6 +12,7 @@ export class CamundaService {
   tasks!: Observable<TasksQuery['tasks']>
   myTask!: any;
   taskQuery: TaskQuery = {state: TaskState.Created};
+  createdTasksQuery: TaskQuery = {state: TaskState.Created};
 
   //camundaForm: Observable<FormQuery>
   formSchema!: string;
@@ -22,6 +23,7 @@ export class CamundaService {
     
     //return(this.tasksGQL.watch({query: query}).valueChanges.pipe(map(result => result.data.tasks)));
     return(this.tasksGQL.watch({query: this.taskQuery}).valueChanges.pipe(map(result => result.data.tasks)));
+    
   }
 
   getForm(id: string, processDefinitionId: string) : Observable<FormQuery['form']> {

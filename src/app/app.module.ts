@@ -16,12 +16,20 @@ import { TaskFormComponent } from './taskform/taskform.component';
 import { ObjectTypeComponent } from './object.type';
 import { CamundaOperatorService } from './services/camundaoperator.service';
 import { ZipcodeComponent } from './zipcode/zipcode.component';
+import {MatButtonModule} from '@angular/material/button';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatCardModule} from '@angular/material/card';
+import {MatDialogModule} from '@angular/material/dialog';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormDialog } from './camundaform/formdialog.component';
+import { OutputDialog } from './camundaform/outputdialog.component';
 
 // Git comment
 @NgModule({
   imports: [
     CommonModule, BrowserModule, AppRoutingModule, MatIconModule, FormlyMaterialModule,
-    ReactiveFormsModule, BrowserAnimationsModule,
+    ReactiveFormsModule, BrowserAnimationsModule, MatButtonModule, MatCardModule, MatButtonToggleModule, FlexLayoutModule, 
+    MatDialogModule,
     FormlyModule.forRoot({
       validationMessages: [{ name: 'required', message: 'This field is required' }],
       types: [
@@ -33,6 +41,6 @@ import { ZipcodeComponent } from './zipcode/zipcode.component';
   ],
   providers: [CamundaService, CamundaOperatorService],
   bootstrap: [AppComponent],
-  declarations: [AppComponent, CamundaFormComponent, ObjectTypeComponent, TaskFormComponent, ZipcodeComponent],
+  declarations: [AppComponent, CamundaFormComponent, ObjectTypeComponent, TaskFormComponent, ZipcodeComponent, FormDialog, OutputDialog],
 })
 export class AppModule {}
