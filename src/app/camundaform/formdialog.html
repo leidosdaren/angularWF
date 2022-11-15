@@ -1,3 +1,9 @@
+
+<h2>Variable List</h2>
+<li *ngFor="let variable of variableList">
+  {{variable}}
+</li>
+
 <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
     <formly-form [model]="model" [fields]="fields" [options]="options" [form]="formGroup">
     </formly-form>

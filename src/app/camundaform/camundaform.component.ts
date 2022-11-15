@@ -52,7 +52,7 @@ export class CamundaFormComponent implements OnInit {
     openFormDialog(formKey: string, processDefId: string, taskId: string): void {
       var formKeySplit = formKey.split(":");
       const dialogRef = this.dialog.open(FormDialog, {
-        width: '250px',
+        width: '450px',
         data: {formId: formKeySplit[2], processDefId: processDefId, taskId: taskId}
       }
     )}

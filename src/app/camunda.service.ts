@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {Apollo, gql, QueryRef} from 'apollo-angular';
 import { Observable } from 'rxjs';
 import {map} from 'rxjs/operators';
-import {FormGQL, FormQuery, Form, TasksGQL, TaskQuery, Task, TasksQuery, ClaimTaskGQL, TaskState, CompleteTaskGQL, VariableInput} from '../graphql/generated';
+import {FormGQL, FormQuery, Form, TasksGQL, TaskQuery, Task, TasksQuery, ClaimTaskGQL, TaskState, CompleteTaskGQL, VariableInput, VariablesQuery, VariablesGQL} from '../graphql/generated';
 
 @Injectable({
   providedIn: 'root',
@@ -17,13 +17,18 @@ export class CamundaService {
   //camundaForm: Observable<FormQuery>
   formSchema!: string;
   
-  constructor(private formGQL: FormGQL, private tasksGQL: TasksGQL, private claimTaskGQL: ClaimTaskGQL, private completeTaskGQL: CompleteTaskGQL) {  }
+  constructor(private formGQL: FormGQL, private tasksGQL: TasksGQL, private claimTaskGQL: ClaimTaskGQL, 
+    private completeTaskGQL: CompleteTaskGQL, private variablesGQL: VariablesGQL) {  }
 
   getTasks(query: TaskQuery) : Observable<TasksQuery['tasks']> {
     
     //return(this.tasksGQL.watch({query: query}).valueChanges.pipe(map(result => result.data.tasks)));
     return(this.tasksGQL.watch({query: this.taskQuery}).valueChanges.pipe(map(result => result.data.tasks)));
     
+  }
+
+  getVariables(taskId: string, variables: string[]) : Observable<VariablesQuery['variables']> {
+    return(this.variablesGQL.watch({taskId: taskId, variableNames: variables}).valueChanges.pipe(map(result => result.data.variables)));
   }
 
   getForm(id: string, processDefinitionId: string) : Observable<FormQuery['form']> {

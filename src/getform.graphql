@@ -6,6 +6,16 @@ query form ($id: String!, $processDefinitionId: String!) {
     }
 }
 
+query variables ($taskId: String!, $variableNames: [String!]!) {
+    variables (taskId: $taskId, variableNames: $variableNames) {
+        id
+        name
+        value
+        previewValue
+        isValueTruncated
+    }
+}
+
 query tasks ($query: TaskQuery!) {
     tasks (query: $query) {
         id

@@ -12,7 +12,6 @@ import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
 import { CamundaService } from './camunda.service';
 import { CamundaFormComponent } from './camundaform/camundaform.component';
-import { TaskFormComponent } from './taskform/taskform.component';
 import { ObjectTypeComponent } from './object.type';
 import { CamundaOperatorService } from './services/camundaoperator.service';
 import { ZipcodeComponent } from './zipcode/zipcode.component';
@@ -22,7 +21,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatDialogModule} from '@angular/material/dialog';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormDialog } from './camundaform/formdialog.component';
-import { OutputDialog } from './camundaform/outputdialog.component';
+
 
 // Git comment
 @NgModule({
@@ -41,6 +40,6 @@ import { OutputDialog } from './camundaform/outputdialog.component';
   ],
   providers: [CamundaService, CamundaOperatorService],
   bootstrap: [AppComponent],
-  declarations: [AppComponent, CamundaFormComponent, ObjectTypeComponent, TaskFormComponent, ZipcodeComponent, FormDialog, OutputDialog],
+  declarations: [AppComponent, CamundaFormComponent, ObjectTypeComponent, ZipcodeComponent, FormDialog],
 })
 export class AppModule {}

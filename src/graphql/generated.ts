@@ -217,6 +217,14 @@ export type FormQueryVariables = Exact<{
 
 export type FormQuery = { __typename?: 'Query', form?: { __typename?: 'Form', id: string, processDefinitionId: string, schema: string } | null };
 
+export type VariablesQueryVariables = Exact<{
+  taskId: Scalars['String'];
+  variableNames: Array<Scalars['String']> | Scalars['String'];
+}>;
+
+
+export type VariablesQuery = { __typename?: 'Query', variables: Array<{ __typename?: 'Variable', id: string, name: string, value: string, previewValue: string, isValueTruncated: boolean }> };
+
 export type TasksQueryVariables = Exact<{
   query: TaskQuery;
 }>;
@@ -255,6 +263,28 @@ export const FormDocument = gql`
   })
   export class FormGQL extends Apollo.Query<FormQuery, FormQueryVariables> {
     document = FormDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const VariablesDocument = gql`
+    query variables($taskId: String!, $variableNames: [String!]!) {
+  variables(taskId: $taskId, variableNames: $variableNames) {
+    id
+    name
+    value
+    previewValue
+    isValueTruncated
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class VariablesGQL extends Apollo.Query<VariablesQuery, VariablesQueryVariables> {
+    document = VariablesDocument;
     
     constructor(apollo: Apollo.Apollo) {
       super(apollo);

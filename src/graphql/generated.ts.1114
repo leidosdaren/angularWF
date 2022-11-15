@@ -203,7 +203,9 @@ export type Variable = {
 
 /** Change or add a variable with name and value. */
 export type VariableInput = {
+  /** Name of the variable. */
   name: Scalars['String'];
+  /** Value of the variable. Complex values, e.g. a list of objects, must be serialized as JSON. */
   value: Scalars['String'];
 };
 
@@ -214,6 +216,29 @@ export type FormQueryVariables = Exact<{
 
 
 export type FormQuery = { __typename?: 'Query', form?: { __typename?: 'Form', id: string, processDefinitionId: string, schema: string } | null };
+
+export type TasksQueryVariables = Exact<{
+  query: TaskQuery;
+}>;
+
+
+export type TasksQuery = { __typename?: 'Query', tasks: Array<{ __typename?: 'Task', id: string, name: string, taskDefinitionId: string, processName: string, creationTime: string, completionTime?: string | null, assignee?: string | null, taskState: TaskState, sortValues?: Array<string> | null, isFirst?: boolean | null, formKey?: string | null, processDefinitionId?: string | null, candidateGroups?: Array<string> | null, variables?: Array<{ __typename?: 'Variable', id: string, name: string, value: string, previewValue: string, isValueTruncated: boolean }> | null }> };
+
+export type ClaimTaskMutationVariables = Exact<{
+  taskId: Scalars['String'];
+  assignee?: InputMaybe<Scalars['String']>;
+}>;
+
+
+export type ClaimTaskMutation = { __typename?: 'Mutation', claimTask: { __typename?: 'Task', id: string, name: string, taskDefinitionId: string, processName: string, creationTime: string, completionTime?: string | null, assignee?: string | null, taskState: TaskState, sortValues?: Array<string> | null, isFirst?: boolean | null, formKey?: string | null, processDefinitionId?: string | null, candidateGroups?: Array<string> | null, variables?: Array<{ __typename?: 'Variable', id: string, name: string, value: string, previewValue: string, isValueTruncated: boolean }> | null } };
+
+export type CompleteTaskMutationVariables = Exact<{
+  taskId: Scalars['String'];
+  variables: Array<VariableInput> | VariableInput;
+}>;
+
+
+export type CompleteTaskMutation = { __typename?: 'Mutation', completeTask: { __typename?: 'Task', id: string, name: string, taskDefinitionId: string, processName: string, creationTime: string, completionTime?: string | null, assignee?: string | null, taskState: TaskState, sortValues?: Array<string> | null, isFirst?: boolean | null, formKey?: string | null, processDefinitionId?: string | null, candidateGroups?: Array<string> | null, variables?: Array<{ __typename?: 'Variable', id: string, name: string, value: string, previewValue: string, isValueTruncated: boolean }> | null } };
 
 export const FormDocument = gql`
     query form($id: String!, $processDefinitionId: String!) {
@@ -230,6 +255,117 @@ export const FormDocument = gql`
   })
   export class FormGQL extends Apollo.Query<FormQuery, FormQueryVariables> {
     document = FormDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const TasksDocument = gql`
+    query tasks($query: TaskQuery!) {
+  tasks(query: $query) {
+    id
+    name
+    taskDefinitionId
+    processName
+    creationTime
+    completionTime
+    assignee
+    variables {
+      id
+      name
+      value
+      previewValue
+      isValueTruncated
+    }
+    taskState
+    sortValues
+    isFirst
+    formKey
+    processDefinitionId
+    candidateGroups
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class TasksGQL extends Apollo.Query<TasksQuery, TasksQueryVariables> {
+    document = TasksDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const ClaimTaskDocument = gql`
+    mutation claimTask($taskId: String!, $assignee: String) {
+  claimTask(taskId: $taskId, assignee: $assignee) {
+    id
+    name
+    taskDefinitionId
+    processName
+    creationTime
+    completionTime
+    assignee
+    variables {
+      id
+      name
+      value
+      previewValue
+      isValueTruncated
+    }
+    taskState
+    sortValues
+    isFirst
+    formKey
+    processDefinitionId
+    candidateGroups
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class ClaimTaskGQL extends Apollo.Mutation<ClaimTaskMutation, ClaimTaskMutationVariables> {
+    document = ClaimTaskDocument;
+    
+    constructor(apollo: Apollo.Apollo) {
+      super(apollo);
+    }
+  }
+export const CompleteTaskDocument = gql`
+    mutation completeTask($taskId: String!, $variables: [VariableInput!]!) {
+  completeTask(taskId: $taskId, variables: $variables) {
+    id
+    name
+    taskDefinitionId
+    processName
+    creationTime
+    completionTime
+    assignee
+    variables {
+      id
+      name
+      value
+      previewValue
+      isValueTruncated
+    }
+    taskState
+    sortValues
+    isFirst
+    formKey
+    processDefinitionId
+    candidateGroups
+  }
+}
+    `;
+
+  @Injectable({
+    providedIn: 'root'
+  })
+  export class CompleteTaskGQL extends Apollo.Mutation<CompleteTaskMutation, CompleteTaskMutationVariables> {
+    document = CompleteTaskDocument;
     
     constructor(apollo: Apollo.Apollo) {
       super(apollo);
